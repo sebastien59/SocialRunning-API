@@ -31,7 +31,7 @@ sequelize.sync({force:true}).then(function(){
     firstname: "Sebastien",
     lastname: "Merchez",
     email: "merchez.sebastien@gmail.com",
-    birthday: "1994-13-04",
+    birthday: "1994-04-13",
     password: "test",
     zone: 10
   })

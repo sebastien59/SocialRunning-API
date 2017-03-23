@@ -16,6 +16,7 @@ module.exports = (req,res)=>{
        first_name: user.get('firstname'),
        last_name: user.get('lastname'),
        email: user.get('email'),
+       birthday: user.get('birthday'),
        zone: user.get('zone')
      };
 
