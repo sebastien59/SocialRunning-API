@@ -11,7 +11,7 @@ let sequelize = database.sequelize;
 var User = sequelize.define('user', {
   firstname: Sequelize.STRING(45),
   lastname: Sequelize.STRING(45),
-  email: Sequelize.STRING(100),
+  email: {type: Sequelize.STRING(100), unique:true},
   birthday: Sequelize.DATE,
   password: Sequelize.STRING(40),
   zone: Sequelize.INTEGER,

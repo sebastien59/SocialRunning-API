@@ -4,46 +4,26 @@ let jwt = require('jsonwebtoken');
 let config = require('../config/config.js')
 
 module.exports = (req,res)=>{
-  //TODO validate req.body.username and req.body.password
-  //if is invalid, return 401
-  console.log(req.body)
-
   User.findOne({
-   where: {email:req.body.email, password:req.body.password}
- }).then(function(user){
-   if(user != null){
-     let profile = {
-       first_name: user.get('firstname'),
-       last_name: user.get('lastname'),
-       email: user.get('email'),
-       birthday: user.get('birthday'),
-       zone: user.get('zone')
-     };
+     where: {email:req.body.email, password:req.body.password}
+   }).then(function(user){
+     if(user != null){
+       let profile = {
+         first_name: user.get('firstname'),
+         last_name: user.get('lastname'),
+         email: user.get('email'),
+         birthday: user.get('birthday'),
+         zone: user.get('zone')
+       };
 
-     // We are sending the profile inside the token
-     let token = jwt.sign(profile, config.secret, {expiresIn: "2 days"});
+       // We are sending the profile inside the token
+       let token = jwt.sign(profile, config.secret, {expiresIn: "2 days"});
 
-     res.json({ token: token });
-   }else{
-     res.status(401).send('Wrong user or password');
-     return;
-   }
- });
-  /*if (!(req.body.username === 'john.doe' && req.body.password === 'foobar')) {
-    res.status(401).send('Wrong user or password');
-    return;
-  }
-
-  let profile = {
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'john@doe.com',
-    id: 123
-  };
-
-  // We are sending the profile inside the token
-  let token = jwt.sign(profile, secret, {expiresIn: "2 days"});
-
-  res.json({ token: token });*/
+       res.json({ token: token });
+     }else{
+       res.status(401).send('Connexion échoué');
+       return;
+     }
+   });
   return;
 }
