@@ -17,7 +17,7 @@ let User = require('./models/user.js');
 // We are going to protect /api routes with JWT
 //app.get('/api', expressJwt({secret: config.secret}));
 
-app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate']}));
+app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate', '/api/register']}));
 
 app.use(function(err, req, res, next){
   if (err.constructor.name === 'UnauthorizedError') {
