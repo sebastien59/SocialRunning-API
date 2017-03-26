@@ -15,7 +15,7 @@ let config = require('../config/config.js')
  */
 
 module.exports = (req,res)=>{
-  console.log(req.body;)
+  console.log(req.body);
   User.create(req.body)
       .then(function(){
         res.status(200).json({result: 1});
