@@ -44,7 +44,8 @@ app.use(function(err, req, res, next){
 });
 
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
+  limit: '8mb'
 }));
 app.use(bodyParser.json());
 
