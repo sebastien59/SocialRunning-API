@@ -4,10 +4,10 @@ let bodyParser = require('body-parser');
 
 let jwt = require('jsonwebtoken');  //https://npmjs.org/package/node-jsonwebtoken
 let expressJwt = require('express-jwt'); //https://npmjs.org/package/express-jwt
-var multer  = require('multer');
+let multer  = require('multer');
 var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, './uploads/')
+            cb(null, './uploads/');
         },
         filename: function (req, file, cb) {
 
@@ -17,17 +17,17 @@ var storage = multer.diskStorage({
                     return "";
                 }
                 return fileExt.pop();
-            }
-            cb(null, Date.now() + '.' + getFileExt(file.originalname))
+            };
+            cb(null, Date.now() + '.' + getFileExt(file.originalname));
         }
-    })
+    });
 
 //configuration
-let config = require("./config/config.js")
+let config = require("./config/config.js");
 
 //Contollers
 let controller = require('./controllers');
-console.log(controller)
+
 //Models
 let User = require('./models/user.js');
 
@@ -37,7 +37,7 @@ let User = require('./models/user.js');
 app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate', '/api/register']}));
 
 
-app.use(function(err, req, res, next){
+app.use(function(err, req, res){
   if (err.constructor.name === 'UnauthorizedError') {
     res.status(401).send('Unauthorized');
   }
@@ -45,17 +45,16 @@ app.use(function(err, req, res, next){
 
 app.use(bodyParser.urlencoded({
   extended: true,
-  limit: '8mb'
+  limit: '8MB'
 }));
 app.use(bodyParser.json());
 
 app.post('/api/register', multer({ storage:storage,
   fileFilter: function (req, file, cb) {
-    console.log(file);
-    extensionAuthorized = ["image/jpeg", "image/png"];
+    let extensionAuthorized = ["image/jpeg", "image/png"];
     console.log(extensionAuthorized.indexOf(file.mimetype));
     if (extensionAuthorized.indexOf(file.mimetype)<0) {
-      return cb(new Error('Only images are allowed'))
+      return cb(new Error('Only images are allowed'));
     }
     cb(null, true);
   },
