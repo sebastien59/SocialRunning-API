@@ -21,7 +21,7 @@ module.exports = (req,res)=>{
 
        res.json({ token: token });
      }else{
-       res.status(401).send('Connexion échoué');
+       res.status(401).json({result: 0});
        return;
      }
    });

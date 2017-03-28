@@ -4,6 +4,23 @@ let bodyParser = require('body-parser');
 
 let jwt = require('jsonwebtoken');  //https://npmjs.org/package/node-jsonwebtoken
 let expressJwt = require('express-jwt'); //https://npmjs.org/package/express-jwt
+var multer  = require('multer');
+var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, './uploads/')
+        },
+        filename: function (req, file, cb) {
+
+            var getFileExt = function(fileName){
+                var fileExt = fileName.split(".");
+                if( fileExt.length === 1 || ( fileExt[0] === "" && fileExt.length === 2 ) ) {
+                    return "";
+                }
+                return fileExt.pop();
+            }
+            cb(null, Date.now() + '.' + getFileExt(file.originalname))
+        }
+    })
 
 //configuration
 let config = require("./config/config.js")
@@ -19,6 +36,7 @@ let User = require('./models/user.js');
 
 app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate', '/api/register']}));
 
+
 app.use(function(err, req, res, next){
   if (err.constructor.name === 'UnauthorizedError') {
     res.status(401).send('Unauthorized');
@@ -30,7 +48,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.post('/api/register', controller.register);
+app.post('/api/register', multer({ storage:storage,
+  fileFilter: function (req, file, cb) {
+    console.log(file);
+    extensionAuthorized = ["image/jpeg", "image/png"];
+    console.log(extensionAuthorized.indexOf(file.mimetype));
+    if (extensionAuthorized.indexOf(file.mimetype)<0) {
+      return cb(new Error('Only images are allowed'))
+    }
+    cb(null, true);
+  },
+}).single('avatar'),controller.register);
+
 
 app.post('/authenticate', controller.auth);
 

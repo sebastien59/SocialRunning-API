@@ -15,7 +15,10 @@ let config = require('../config/config.js')
  */
 
 module.exports = (req,res)=>{
+  console.log(req.file);
   console.log(req.body);
+
+  req.body.profilPicture = req.file.filename;
   User.create(req.body)
       .then(function(){
         res.status(200).json({result: 1});

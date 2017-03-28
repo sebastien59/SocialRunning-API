@@ -15,6 +15,7 @@ var User = sequelize.define('user', {
   birthday: Sequelize.DATE,
   password: Sequelize.STRING(40),
   zone: Sequelize.INTEGER,
+  profilPicture: Sequelize.STRING(50)
 }/*, {
     classMethods: {
       associate: function(Statut) {
