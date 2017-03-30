@@ -37,7 +37,7 @@ let User = require('./models/user.js');
 app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate', '/api/register']}));
 
 
-app.use(function(err, req, res){
+app.use(function(err, req, res, next){
   if (err.constructor.name === 'UnauthorizedError') {
     res.status(401).send('Unauthorized');
   }
