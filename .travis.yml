@@ -1,3 +1,19 @@
 language: node_js
 node_js:
   - v6.9.4
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_59394363c927_key -iv $encrypted_59394363c927_iv -in github_deploy_key.enc -out github_deploy_key -d
+
+after_success:
+  - |
+
+       $(npm bin)/set-up-ssh --key "$encrypted_59394363c927_key" \
+                             --iv "$encrypted_59394363c927_iv" \
+                             --path-encrypted-key ".travis/github_deploy_key.enc"
+env:
+ global:
+  secure: gSTm3E72UcN7U8JDfCitGLqqbwaHW0cjMp8c5FKu6mMRLWjnXA/go+5TdYv8FZZQS6NfaCsKHf5Hp28OQxNmBhKtZSzK5a87fZbaQMS9kDD84aY8vVzceyBrO8d/hffN48up6iwK3C1u5021g4xYz4v9LAbsEADIYwXXFfmLYAbZsuCmMS6leySqajm8yaK4dcPvkQaPtQ
+rEDziBXZQYMxc5CgUvUmWL/+5JV6oWj3DQQubXnK4tZpO3HHxpgEuvz43oUg8ecvieEzHJowpLHQduDZOAmv7895r/387xpNjnfRnhYiAAoYhKZuG52vmb+PHBpRwxMcICRFBMk4uhI4WRFIzOnDFuRzPfbLtGYYzKvLQi4F7l1YROeNE89VJVpUvUo8Q5IwVTgBFc6J/dT4QVGu1fiX06
+g84XDcxeBGb6hxDDdF0sWKGLeBaIqn8NEKf+m3jfkJ4PDIA0BUx8wsfcbWM1JXaKo7H33MusWSyhwbkm8v4rC7p3YloTY0gxUTbSeB4esi3nteOp1bT0dAdKWEA4EirOBx3UyMHfVBegF/F6ss0vPuwTVHS/GKuEfA+zuIzJtOtJ3lDTXhMYnujVAgUDEdxMqyi1SlLgS1j/qpRs93BLRf
+JUJQiMUhr2ImzZEiFwAzCUwLFd4yoi95BuKU7gMQPAnPAky5b+VXg=
