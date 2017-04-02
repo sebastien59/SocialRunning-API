@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.post("/uploads/1490712800042.jpg", function(req, res){
+app.get("/uploads/1490712800042.jpg", function(req, res){
                                         res.sendfile("uploads/1490712800042.jpg");
                                       });
 
