@@ -1,5 +1,9 @@
 let express = require('express');
 let app = express();
+var morgan = require('morgan');
+
+app.use(morgan(':req[authorization]'));
+
 let bodyParser = require('body-parser');
 
 let jwt = require('jsonwebtoken');  //https://npmjs.org/package/node-jsonwebtoken
