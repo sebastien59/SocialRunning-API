@@ -38,7 +38,7 @@ let User = require('./models/user.js');
 // We are going to protect /api routes with JWT
 //app.get('/api', expressJwt({secret: config.secret}));
 
-app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate', '/api/register', "/uploads/1490712800042.jpg"]}));
+app.use(expressJwt({secret: config.secret}).unless({path: ['/authenticate', '/api/register', /^\/uploads\/.*/]}));
 
 app.use(function(err, req, res, next){
   if (err.constructor.name === 'UnauthorizedError') {
@@ -52,9 +52,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get("/uploads/1490712800042.jpg", function(req, res){
-                                        res.sendfile("uploads/1490712800042.jpg");
-                                      });
+app.get("/uploads/:img", function(req, res){
+    console.log(req.params.img);
+    res.sendfile("uploads/"+req.params.img);
+  });
 
 
 app.post('/api/register', multer({ storage:storage,
