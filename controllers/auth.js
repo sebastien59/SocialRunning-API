@@ -10,11 +10,12 @@ module.exports = (req,res)=>{
    }).then(function(user){
      if(user != null){
        let profile = {
-         first_name: user.get('firstname'),
-         last_name: user.get('lastname'),
+         firstname: user.get('firstname'),
+         lastname: user.get('lastname'),
          email: user.get('email'),
          birthday: user.get('birthday'),
-         zone: user.get('zone')
+         zone: user.get('zone'),
+         profilPicture: user.get("profilPicture")
        };
 
        // We are sending the profile inside the token

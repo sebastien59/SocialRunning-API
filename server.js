@@ -66,6 +66,7 @@ app.post('/api/register', multer({ storage:storage,
 
 
 app.post('/authenticate', controller.auth);
+app.get('/api/getUser/:mail', controller.users.getUser);
 
 app.get('/api/restricted', function (req, res) {
   console.log('user ' + req.user.email + ' is calling /api/restricted');

@@ -34,7 +34,8 @@ sequelize.sync({force:true}).then(function(){
     email: "merchez.sebastien@gmail.com",
     birthday: "1994-04-13",
     password: "test",
-    zone: 10
+    zone: 10,
+    profilPicture: "1490712800042.jpg"
   })
 });
 
