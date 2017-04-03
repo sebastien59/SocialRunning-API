@@ -16,6 +16,7 @@ let config = require('../config/config.js')
 
 module.exports = {
   getUser:function(req, res){
+      console.log("Accès getUser");
       let token = req.headers.authorization.replace("Bearer ", "");
       var verifiedJwt = jwt.verify(token,config.secret);
 
