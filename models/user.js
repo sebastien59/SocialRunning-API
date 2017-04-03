@@ -36,7 +36,16 @@ sequelize.sync({force:true}).then(function(){
     password: "test",
     zone: 10,
     profilPicture: "1490712800042.jpg"
-  })
+  });
+  User.create({
+    firstname: "Youssra",
+    lastname: "Chahma",
+    email: "chahma94youssra@gmail.com",
+    birthday: "1994-09-07",
+    password: "test",
+    zone: 10,
+    profilPicture: "1490712854526.jpg"
+  });
 });
 
 module.exports = User

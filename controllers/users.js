@@ -16,16 +16,16 @@ let config = require('../config/config.js')
 
 module.exports = {
   getUser:function(req, res){
-      console.log("Accès getUser");
-      let token = req.headers.authorization.replace("Bearer ", "");
-      var verifiedJwt = jwt.verify(token,config.secret);
+    console.log("Accès getUser");
+    let token = req.headers.authorization.replace("Bearer ", "");
+    var verifiedJwt = jwt.verify(token,config.secret);
 
-               if(verifiedJwt != null){
-                 res.status(500).json(verifiedJwt);
-               }else{
-                 res.status(401).json({result: 0});
-                 return;
-               }
+    if(verifiedJwt != null){
+      res.status(500).json(verifiedJwt);
+    }else{
+      res.status(401).json({result: 0});
+      return;
+    }
   }
 
 }
