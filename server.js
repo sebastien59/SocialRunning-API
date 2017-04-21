@@ -54,6 +54,7 @@ app.use(bodyParser.json());
 
 app.get("/uploads/:img", function(req, res){
     console.log(req.params.img);
+    
     res.sendfile("uploads/"+req.params.img);
   });
 
@@ -80,6 +81,6 @@ app.get('/api/restricted', function (req, res) {
   });
 });
 
-app.listen(3001, function () {
+app.listen((process.env.PORT || 3001), function () {
   console.log('listening on http://localhost:3001');
 });
