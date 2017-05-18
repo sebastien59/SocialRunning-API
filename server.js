@@ -8,6 +8,7 @@ let bodyParser = require('body-parser');
 
 let jwt = require('jsonwebtoken');  //https://npmjs.org/package/node-jsonwebtoken
 let expressJwt = require('express-jwt'); //https://npmjs.org/package/express-jwt
+
 let multer  = require('multer');
 var storage = multer.diskStorage({
         destination: function (req, file, cb) {
@@ -34,6 +35,18 @@ let controller = require('./controllers');
 
 //Models
 let User = require('./models/user.js');
+let Days = require('./models/days.js');
+let Days_groups = require('./models/days_groups.js');
+let Frequences = require('./models/frequences.js');
+let Groupes = require('./models/groupes.js');
+let Path_groupes = require('./models/path_groups.js');
+let Path_races = require('./models/path_races.js');
+let Paths = require('./models/paths.js');
+let Race = require('./models/race.js');
+let Races_groups = require('./models/races_groups.js');
+let User_groups = require('./models/users_groups.js');
+let User_races = require('./models/users_races.js');
+let Date = require('./models/date.js');
 
 // We are going to protect /api routes with JWT
 //app.get('/api', expressJwt({secret: config.secret}));
@@ -54,7 +67,7 @@ app.use(bodyParser.json());
 
 app.get("/uploads/:img", function(req, res){
     console.log(req.params.img);
-    
+
     res.sendfile("uploads/"+req.params.img);
   });
 
@@ -62,7 +75,6 @@ app.get("/uploads/:img", function(req, res){
 app.post('/api/register', multer({ storage:storage,
   fileFilter: function (req, file, cb) {
     let extensionAuthorized = ["image/jpeg", "image/png"];
-    console.log(extensionAuthorized.indexOf(file.mimetype));
     if (extensionAuthorized.indexOf(file.mimetype)<0) {
       return cb(new Error('Only images are allowed'));
     }
@@ -72,7 +84,9 @@ app.post('/api/register', multer({ storage:storage,
 
 
 app.post('/authenticate', controller.auth);
+
 app.get('/api/getUser/:mail', controller.users.getUser);
+app.post('/api/groupe/create', controller.groupes.create);
 
 app.get('/api/restricted', function (req, res) {
   console.log('user ' + req.user.email + ' is calling /api/restricted');

@@ -4,14 +4,9 @@ let jwt = require('jsonwebtoken');
 let config = require('../config/config.js')
 
 /**
- * @api {post} /api/register Insert un utilisateur dans la table.
- * @apiName Register
+ * @api {post} /api/user Permet de gérer des utilisateurs
+ * @apiName user
  * @apiGroup User
- *
- * @apiParam {String} id Users unique ID.
- *
- * @apiSuccess {String} firstname Firstname of the User.
- * @apiSuccess {String} lastname  Lastname of the User.
  */
 
 module.exports = {
@@ -21,7 +16,7 @@ module.exports = {
     var verifiedJwt = jwt.verify(token,config.secret);
 
     if(verifiedJwt != null){
-      res.status(500).json(verifiedJwt);
+      res.status(200).json(verifiedJwt);
     }else{
       res.status(401).json({result: 0});
       return;

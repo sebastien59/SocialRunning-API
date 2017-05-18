@@ -4,7 +4,7 @@ let jwt = require('jsonwebtoken');
 let config = require('../config/config.js')
 
 module.exports = (req,res)=>{
-  console.log("test")
+
   User.findOne({
      where: {email:req.body.email, password:req.body.password}
    }).then(function(user){
@@ -21,7 +21,7 @@ module.exports = (req,res)=>{
        // We are sending the profile inside the token
        let token = jwt.sign(profile, config.secret, {expiresIn: "2 days"});
 
-       res.status(500).json({ token: token });
+       res.status(200).json({ token: token });
      }else{
        res.status(401).json({result: 0});
        return;
