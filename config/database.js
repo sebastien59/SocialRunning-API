@@ -3,6 +3,11 @@
 let Sequelize = require('sequelize');
 let config = require('./config.js');
 
+let dbname="";
+let user=""
+let password = "";
+let host = "";
+
 if(config.ENV == "production"){
   dbname = "heroku_e83e7e7f69984f5";
   user = "b0d74c73a05620";
@@ -17,9 +22,9 @@ if(config.ENV == "production"){
 
 
 module.exports ={
-  sequelize: new Sequelize("heroku_e83e7e7f69984f5", "b0d74c73a05620", "7e3a590e",
+  sequelize: new Sequelize(dbname, user, password,
     {
-        host: "eu-cdbr-west-01.cleardb.com", // Host : localhost si base en local, ip ou nom de domaine sinon
+        host: host, // Host : localhost si base en local, ip ou nom de domaine sinon
         dialect: 'mysql', // Type de base de données : 'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql'
 
         pool: {
