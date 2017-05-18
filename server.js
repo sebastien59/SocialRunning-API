@@ -46,7 +46,7 @@ let Race = require('./models/race.js');
 let Races_groups = require('./models/races_groups.js');
 let User_groups = require('./models/users_groups.js');
 let User_races = require('./models/users_races.js');
-let Date = require('./models/date.js');
+let Dates = require('./models/date.js');
 
 // We are going to protect /api routes with JWT
 //app.get('/api', expressJwt({secret: config.secret}));

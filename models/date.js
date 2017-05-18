@@ -8,7 +8,7 @@ let database = require('../config/database.js');
 let sequelize = database.sequelize;
 
 // Initialisation du model
-var Date = sequelize.define('date', {
+var Dates = sequelize.define('date', {
   date: Sequelize.DATE,
   idGroupe: Sequelize.INTEGER
 });
@@ -18,4 +18,4 @@ var Date = sequelize.define('date', {
 */
 sequelize.sync({force:true});
 
-module.exports = Date;
+module.exports = Dates;
