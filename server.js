@@ -89,6 +89,7 @@ app.post('/api/register', multer({ storage:storage,
 app.post('/authenticate', controller.auth);
 
 app.get('/api/getUser/:mail', controller.users.getUser);
+app.post('/api/user/update', controller.users.update);
 app.post('/api/groupe/create', controller.groupes.create);
 app.get('/api/groupe/getAll', controller.groupes.getAll);
 
