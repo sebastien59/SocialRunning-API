@@ -3,10 +3,10 @@
 let Sequelize = require('sequelize');
 let config = require('./config.js');
 
-/*let dbname="";
-let user=""
-let password = "";
-let host = "";
+dbname="";
+user="";
+password = "";
+host = "";
 
 if(config.ENV == "production"){
   dbname = "heroku_e83e7e7f69984f5";
@@ -18,12 +18,9 @@ if(config.ENV == "production"){
   user = 'root';
   password = 'root';
   host = "localhost";
-}*/
+}
 
-dbname = "heroku_e83e7e7f69984f5";
-user = "b0d74c73a05620";
-password = "7e3a590e";
-host = "eu-cdbr-west-01.cleardb.com";
+
 module.exports ={
   sequelize: new Sequelize(dbname, user, password,
     {

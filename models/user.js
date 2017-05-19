@@ -27,6 +27,7 @@ var User = sequelize.define('user', {
 /*
   On force la suppression afin de créer la table à chaque lancement de l'application. Utile en dev uniquement.
 */
+User.drop();
 sequelize.sync({force:true}).then(function(){
   User.create({
     firstname: "Sebastien",

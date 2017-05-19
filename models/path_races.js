@@ -17,6 +17,7 @@ var Path_races = sequelize.define('path_races', {
 /*
   On force la suppression afin de créer la table à chaque lancement de l'application. Utile en dev uniquement.
 */
-sequelize.sync({force:true});
+
+sequelize.sync();
 
 module.exports = Path_races;

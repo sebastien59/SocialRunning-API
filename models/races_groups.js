@@ -16,6 +16,7 @@ var Races_groups = sequelize.define('race_groups', {
 /*
   On force la suppression afin de créer la table à chaque lancement de l'application. Utile en dev uniquement.
 */
-sequelize.sync({force:true});
+
+sequelize.sync();
 
 module.exports = Races_groups;

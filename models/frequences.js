@@ -15,7 +15,8 @@ var Frequence = sequelize.define('frequence', {
 /*
   On force la suppression afin de créer la table à chaque lancement de l'application. Utile en dev uniquement.
 */
-sequelize.sync({force:true}).then(function(){
+
+sequelize.sync().then(function(){
   Frequence.bulkCreate([
     { name: "Hebdomadaire" },
     { name: "Occasionnel" }

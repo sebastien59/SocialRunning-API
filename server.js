@@ -29,11 +29,13 @@ var storage = multer.diskStorage({
 
 //configuration
 let config = require("./config/config.js");
-
+let database = require("./config/database.js");
 //Contollers
 let controller = require('./controllers');
 
 //Models
+
+
 let User = require('./models/user.js');
 let Days = require('./models/days.js');
 let Days_groups = require('./models/days_groups.js');
@@ -47,6 +49,7 @@ let Races_groups = require('./models/races_groups.js');
 let User_groups = require('./models/users_groups.js');
 let User_races = require('./models/users_races.js');
 let Dates = require('./models/date.js');
+
 
 // We are going to protect /api routes with JWT
 //app.get('/api', expressJwt({secret: config.secret}));
