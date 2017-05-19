@@ -9,6 +9,7 @@ module.exports = (req,res)=>{
      where: {email:req.body.email, password:req.body.password}
    }).then(function(user){
      if(user != null){
+       console.log(user.get('birthday'));
        let profile = {
          firstname: user.get('firstname'),
          lastname: user.get('lastname'),
