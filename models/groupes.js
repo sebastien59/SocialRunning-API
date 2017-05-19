@@ -28,13 +28,13 @@ sequelize.sync({force:true}).then(function(){
     idFrequence: 1
   });
   Groupe.create({
-    name: "GroupeTest2",
+    name: "Groupe Test2",
     pointRdv: "{\"lat\":50.436241, \"lng\":2.825957}",
     private: 0,
     idFrequence: 1
   });
   Groupe.create({
-    name: "GroupeTest3",
+    name: "Test groupe",
     pointRdv: "{\"lat\":50.432702, \"lng\":2.822619 }",
     private: 0,
     idFrequence: 1
