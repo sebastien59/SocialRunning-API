@@ -20,6 +20,25 @@ var Groupe = sequelize.define('groupe', {
   On force la suppression afin de créer la table à chaque lancement de l'application. Utile en dev uniquement.
 */
 
-sequelize.sync();
+sequelize.sync({force:true}).then(function(){
+  Groupe.create({
+    name: "GroupeTest1",
+    pointRdv: "{lat:50.439574, lng:2.820703}",
+    private: 0,
+    idFrequence: 1
+  });
+  Groupe.create({
+    name: "GroupeTest2",
+    pointRdv: "{lat:50.436241, lng:2.825957}",
+    private: 0,
+    idFrequence: 1
+  });
+  Groupe.create({
+    name: "GroupeTest3",
+    pointRdv: "{lat:50.432702, lng:2.822619 }",
+    private: 0,
+    idFrequence: 1
+  });
+});
 
 module.exports = Groupe;
