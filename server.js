@@ -90,6 +90,7 @@ app.post('/authenticate', controller.auth);
 
 app.get('/api/getUser/:mail', controller.users.getUser);
 app.post('/api/groupe/create', controller.groupes.create);
+app.get('/api/groupe/getAll', controller.groupes.getAll);
 
 app.get('/api/restricted', function (req, res) {
   console.log('user ' + req.user.email + ' is calling /api/restricted');

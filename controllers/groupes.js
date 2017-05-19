@@ -65,6 +65,11 @@ module.exports = {
       res.status(401).json({result: 0});
       return;
     }
+  },
+  getAll: function(req, res){
+    Groupe.findAll().then(function(groupes){
+      res.status(200).json(groupes);
+    });
   }
 
 }
