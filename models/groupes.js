@@ -10,7 +10,7 @@ let sequelize = database.sequelize;
 // Initialisation du model
 var Groupe = sequelize.define('groupe', {
   name: Sequelize.STRING(45),
-  pointRdv: Sequelize.STRING(45),
+  pointRdv: Sequelize.STRING(250),
   private: Sequelize.INTEGER,
   idFrequence: Sequelize.INTEGER,
 
