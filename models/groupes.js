@@ -34,7 +34,7 @@ sequelize.sync({force:true}).then(function(){
     idFrequence: 1
   });
   Groupe.create({
-    name: "Test groupe",
+    name: "Test groupe ",
     pointRdv: "{\"lat\":50.432702, \"lng\":2.822619 }",
     private: 0,
     idFrequence: 1
