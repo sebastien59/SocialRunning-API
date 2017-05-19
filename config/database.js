@@ -9,7 +9,7 @@ password = "";
 host = "";
 
 if(config.ENV == "production"){
-  dbname = "SocailRunning";
+  dbname = "SocialRunning";
   user = "root";
   password = "130494";
   host = "merchez.com";
