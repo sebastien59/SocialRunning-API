@@ -9,10 +9,10 @@ password = "";
 host = "";
 
 if(config.ENV == "production"){
-  dbname = "heroku_e83e7e7f69984f5";
-  user = "b0d74c73a05620";
-  password = "7e3a590e";
-  host = "eu-cdbr-west-01.cleardb.com";
+  dbname = "SocailRunning";
+  user = "root";
+  password = "130494";
+  host = "merchez.com";
 }else{
   dbname = 'social';
   user = 'root';
