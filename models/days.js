@@ -17,7 +17,7 @@ var Days = sequelize.define('day', {
   On force la suppression afin de créer la table à chaque lancement de l'application. Utile en dev uniquement.
 */
 
-sequelize.sync().then(function(){
+sequelize.sync({force:true}).then(function(){
   Days.bulkCreate([
     {name:"Lundi"},
     {name:"Mardi"},
